@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Wordle Extensions",
-    "description": "Wordle Solvings Extension",
+    "description": "Wordle Solvings Extension test",
     "version": "1.0",
     "action": {
         "default_popup": "scripts/popup.html",
