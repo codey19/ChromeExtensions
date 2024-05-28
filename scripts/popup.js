@@ -1,12 +1,13 @@
 import * as d3 from 'https://d3js.org/d3.v3.min.js';
-var validGuesses = [];
+var allValidGuesses = [];
 var letterFrequencies = [];
 d3.csv("WordleExtension/validGuesses.csv").then(function(data) {
-    validGuesses = data;
+    allValidGuesses = data;
 });
 d3.csv("WordleExtension/letterFrequency.csv").then(function(data) {
     letterFrequencies = data;
 });
+var validGuesses = [...allValidGuesses];
 var validAnswers = [...letterFrequencies];
 var gray = new Set();
 //ai component helps rate the frquency and possibility of the indivdual word 
@@ -29,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function nextGuess(word, colors){//data_states =  empty, tbd, absent, present, correct
     var greenYellow = new Map();
-    for(let i = 0; i < word.length; i ++){
+    for(let i = 0; i < word.length; i ++){//accounts for reoccurance of letters
         if(colors[i] === 'correct' || colors[i] === 'present'){
             if(greenYellow.contains(word[i]))
                 greenYellow.set(word[i], greenYellow.get(colors[i]) + 1);
@@ -65,7 +66,15 @@ function nextGuess(word, colors){//data_states =  empty, tbd, absent, present, c
         if(isPossible)
             newValidGuesses.push(validGuesses[i]);
     }
+
+    //stuff
+    for(let i = 0; i < allValidGuesses.length; i++){
+        //checkStats();
+        //rankGeusses();
+    }
+
     validGuesses = newValidGuesses; 
+
     validAnswers = [...newValidGuesses];//valid guesses == valid answers
     
 }

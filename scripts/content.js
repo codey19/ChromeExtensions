@@ -26,6 +26,39 @@ function readGeuss(rowNum){
     console.log("Error: Cannot Find Row");
   }
 }
+
+async function fetchData(){
+  //deal with the intro screen
+  await new Promise(resolve => {
+    const button = document.querySelector('.Welcome-module_button__ZG0Zh');
+    if (button) {
+      button.addEventListener('click', resolve);
+    } else {
+      console.log('The button not found');
+    }
+  });
+
+  var curRow = document.querySelector('[aria-label="Row ${rowNum}"]');
+  const firstletter = curRow.querySelector('.Tile-module_tile__UWEHN');
+  if (!firstletter) {
+    console.log('The .firstletter element not found');
+    return;
+  }
+
+  const observer = new MutationObserver(function() {
+  let curState = firstletter.getAttribute('data-state');
+  if (curState === 'present' || curState === 'absent' || curState === 'correct') {
+    console.log('The data-state attribute is ' + curState);
+    readGeuss(row++);
+    observer.disconnect();
+  }
+  const observerOptions  = {attributes: true, attributeFilter: ['data-state']};
+  observer.observe(firstletter, observerOptions);
+  });
+}
+
+fetchData();
+/*
 //deal with the intro screen
 let button =  document.querySelector('.Welcome-module_button__ZG0Zh');
 button.addEventListener('click', function() {
@@ -44,7 +77,7 @@ button.addEventListener('click', function() {
   observer.observe(firstletter, observerOptions);
   });
 });
-
+*/
 // var observer = new MutationObserver(readGeuss);
 // observer.observe(curRow, );
 // readGeuss(1);
