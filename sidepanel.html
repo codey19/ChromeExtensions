@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>title</title>
+        <link rel = "stylesheet" href = "style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class = "container">
+            <div id = "header">
+                <div id = "title"><h3>Wordle Guesser</h3></div>
+            </div>
+            <div id = "word-container">
+                <div><h3>Guesses</h3></div>
+                <div id = "progress-bar-div"><progress id="progress-bar" value="32" max="100"> 32% </progress></div>
+                <div><ol id = "Guesses">
+                    <li>apple</li>
+                </ol></div>
+            </div>
+            <div id = "footer">
+                <table style = "width: 100%; padding-top: 0px;"><tr>
+                    <th><a href = "https://www.nytimes.com/games/wordle/index.html" style = "text-decoration: none;"><p style="text-align: left;">To Wordle</p></a></th>
+                    <th><h1 style = "color:  #4a4c50; text-align: right;">&gt;</h1></th>
+                </tr></table>                
+            </div> 
+        </div>     
+        
+        <script type ="module" src="sidepanel.js"></script>
+    </body>
+</html>

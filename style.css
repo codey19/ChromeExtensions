@@ -1,0 +1,71 @@
+#header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%; 
+    height: 50px; 
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    color:#E5E5E5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+}
+#footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%; 
+    height: 50px; 
+    background-color: #C3F2CB;
+    padding-top: 0px;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+}
+
+#word-container{
+    display: table;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+    text-align: center;
+    background-color: #E5E5E5;
+    width: 80%;
+    height: 80%;
+    font-size: 20px;
+    overflow:auto;
+}
+
+.inter {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight:200;
+    font-style: normal;
+    font-variation-settings:
+      "slnt" 0;
+}
+
+#title{
+    
+}
+
+#progress-bar-div{
+    width: 60%;
+    background-color: #C3F2CB;
+    border-radius: 25px;
+}
+
+#progress-bar{
+    background-color: yellow;
+}
