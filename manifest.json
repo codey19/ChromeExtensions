@@ -1,35 +1,44 @@
 {
-    "manifest_version": 3,
-    "name": "Wordle Extensions",
-    "description": "Wordle Solvings Extension test",
-    "version": "1.0",
-    "action": {
-        "default_popup": "scripts/popup.html",
-        "default_icon": {
-            "16": "images/icon-16.png",
-            "32": "images/icon-32.png",
-            "48": "images/icon-48.png",
-            "128": "images/icon-128.png"
-          }
-    },
-      "permissions": [
-        "scripting", "activeTab"
+  "manifest_version": 3,
+  "name": "My Wordle Extension",
+  "description": "Wordle Solving Extension",
+  "version": "1.0",
+  "icons": {
+    "16": "images/icon-16.png",
+    "32": "images/icon-32.png",
+    "48": "images/icon-48.png",
+    "128": "images/icon-128.png"
+  },
+  "permissions": [
+    "scripting",
+    "activeTab",
+    "sidePanel",
+    "tabs",
+    "storage"
+  ],
+  "host_permissions": ["https://generativeai.googleapis.com/v1/models/gemini-1.5-flash:generateContent"],
+  "action": {
+    "default_title": "Click to open panel"
+  },
+  "side_panel": {
+    "default_path": "scripts/sidepanel.html"
+  },
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+  "content_scripts": [
+    {
+      "js": ["scripts/content.js"],
+      "matches": [
+        "https://www.nytimes.com/games/wordle/*"
       ],
-    "content_scripts": [
-        {
-            "js": ["scripts/content.js"],
-            "matches": [
-                "https://www.nytimes.com/games/wordle/*"
-            ],
-            "run_at": "document_end"
-        }
-    ], 
-    "content_security_policy": {
-        "sandbox": "sandbox allow-scripts; script-src 'self' https://d3js.org/d3.v3.min.js"
-      },
-      "sandbox": {
-        "pages": [
-          "scripts/popup.html"
-        ]
-      }
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["images/linkIcon.png"],
+      "matches": [ "<all_urls>"]
+    }
+  ]
 }
